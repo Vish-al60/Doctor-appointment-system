@@ -8,7 +8,6 @@ const appointRouter = require("./routes/appointRoutes");
 const path = require("path");
 const notificationRouter = require("./routes/notificationRouter");
 
-const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 5000;
