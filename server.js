@@ -29,8 +29,8 @@ app.use("/api/notification", notificationRouter);
 const transporter = nodemailer.createTransport({
   service: "gmail", // You can use any SMTP service
   auth: {
-    user: "vish.chouhan058@gmail.com", // Your email
-    pass: "mzob dpgy ytsy mjks", // Your email password
+    user: process.env.EMAIL_USER, // Your email
+    pass:process.env.EMAIL_PASSWORD , // Your email password
   },
 });
 //email send krne ka code
