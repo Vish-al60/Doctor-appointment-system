@@ -7,11 +7,21 @@ const schema = mongoose.Schema(
       required: true,
       minLength: 3,
     },
-    lastname: {
+   lastname: {
       type: String,
-      required: true,
-      minLength: 3,
+     // default:"user"
+       required: true,
+       minLength: 3,
+    
     },
+  
+ profile: {
+     type: String,
+    // default:"user"
+      required: true,
+     // minLength: 3,
+   
+   },
     email: {
       type: String,
       required: true,

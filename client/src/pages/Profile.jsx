@@ -80,7 +80,11 @@ function Profile() {
         return toast.error("Password must be at least 5 characters long");
       } else if (password !== confpassword) {
         return toast.error("Passwords do not match");
+      } else if(mobile.length!=10){
+        return toast.error("Mobile number must be 10 digits long");
       }
+      
+      
       await toast.promise(
         axios.put(
           "/user/updateprofile",

@@ -44,7 +44,9 @@ const applyfordoctor = async (req, res) => {
     }
 
     const doctor = Doctor({ ...req.body.formDetails, userId: req.locals });
+    //console.log( ...req.body.formDetails);
     const result = await doctor.save();
+    //console.log(result);
 
     return res.status(201).send("Application submitted successfully");
   } catch (error) {

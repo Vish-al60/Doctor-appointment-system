@@ -7,7 +7,7 @@ import { setLoading } from "../redux/reducers/rootSlice";
 import Loading from "../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import jwt_decode from "jwt-decode";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import toast from "react-hot-toast";
 import "../styles/user.css";
 
@@ -60,6 +60,24 @@ const Appointments = () => {
       return error;
     }
   };
+  const date = "13/05/2004";
+  const time = 12.05;
+  /////////////////// ye code dalala /////
+  const sendEmail = (email,name) => {
+    axios
+      .post("http://localhost:5000/send-email", {
+        to: email,
+        subject: "Appointment Confirmation",
+        text:`Dear Patient,\n\nThis is a confirmation for your upcoming appointment with ${name}.\n\nDetails of your appointment:\nDate: ${date}\nTime: ${time}\n\nPlease arrive at least 15 minutes early to complete any necessary paperwork. If you have any questions or need to reschedule, please contact our office directly.\n\nThank you for choosing our clinic!\n\nBest regards,\nHealthBooker`,
+      })
+      .then((response) => {
+        toast.success("Email sent successfully");
+      })
+      .catch((error) => {
+        toast.error("Failed to send email");
+      });
+  };
+  ///////////////////// ye code dala hai/////////
 
   return (
     <>
@@ -117,7 +135,18 @@ const Appointments = () => {
                               disabled={ele?.status === "Completed"}
                               onClick={() => complete(ele)}
                             >
-                              Complete
+                              complete
+                            </button>
+                            {/* <button  style={{margin:'5px', background:'Red'}}className="btn user-btn accept-btn ">Send Mail</button>
+                             */}
+                            <button
+                              style={{ margin: "5px", background: "Red" }}
+                              className="btn user-btn accept-btn"
+                              onClick={() => sendEmail(ele?.userId?.email,ele?.doctorId?.firstname +
+                            " " +
+                            ele?.doctorId?.lastname)} // Assuming ele.userId.email is the patient's email address
+                            >
+                              Send Mail
                             </button>
                           </td>
                         ) : (

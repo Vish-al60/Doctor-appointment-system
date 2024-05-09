@@ -1,0 +1,42 @@
+
+ .custom-file-upload {
+  display: inline-block;
+  padding: 6px 6px;
+  cursor: pointer;
+  background: #f0f0f0;  
+  border: 1px solid #ccc; 
+  border-radius:10px; 
+  /* width: 90px; */
+  
+ }
+ 
+
+   .form-input-hidden {
+    /*  display: none; */
+    position:absolute;
+    margin-left:5px;
+   
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 6px 6px;
+    width: 170px;
+    
+
+    
+}  
+
+/* .custom-file-upload{
+  display: flex;
+  padding: 4px;
+}*/
+
+.toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Show{
+  display: flex;
+  gap: 5px;
+}

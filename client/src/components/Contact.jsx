@@ -25,7 +25,7 @@ const Contact = () => {
         <h2 className="form-heading">Contact Us</h2>
         <form
           method="POST"
-          action={`https://formspree.io/f/${process.env.REACT_FORMIK_SECRET}`}
+          action="https://formspree.io/f/xdoqwpde"
           className="register-form "
         >
           <input
@@ -33,6 +33,9 @@ const Contact = () => {
             name="name"
             className="form-input"
             placeholder="Enter your name"
+            required
+            autoComplete="off"
+
             value={formDetails.name}
             onChange={inputChange}
           />
@@ -41,6 +44,8 @@ const Contact = () => {
             name="email"
             className="form-input"
             placeholder="Enter your email"
+            required
+            autoComplete="off"
             value={formDetails.email}
             onChange={inputChange}
           />
@@ -49,6 +54,9 @@ const Contact = () => {
             name="message"
             className="form-input"
             placeholder="Enter your message"
+            required
+            autoComplete="off"
+            
             value={formDetails.message}
             onChange={inputChange}
             rows="8"

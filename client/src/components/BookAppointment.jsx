@@ -17,9 +17,29 @@ const BookAppointment = ({ setModalOpen, ele }) => {
       [name]: value,
     });
   };
+  const validateDateTime = () => {
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Combine the date and time from the form inputs
+    // Ensure that time is specified, otherwise default to "00:00" to prevent "Invalid Date"
+    const selectedDateTime = new Date(
+      `${formDetails.date}T${formDetails.time || "00:00"}`
+    );
+
+    // console.log("Selected DateTime:", selectedDateTime);
+    // console.log("Current DateTime:", currentDate);
+
+    // Compare the combined date and time with the current date and time
+    return selectedDateTime >= currentDate;
+  };
 
   const bookAppointment = async (e) => {
     e.preventDefault();
+    if (!validateDateTime()) {
+      toast.error("You can't select a past date or time!");
+      return;
+    }
     try {
       await toast.promise(
         axios.post(

@@ -14,6 +14,7 @@ const ApplyDoctor = () => {
     specialization: "",
     experience: "",
     fees: "",
+    doc:"",
   });
 
   const inputChange = (e) => {
@@ -26,6 +27,12 @@ const ApplyDoctor = () => {
 
   const btnClick = async (e) => {
     e.preventDefault();
+
+     const { experience,specialization,fees,doc} = formDetails;
+     console.log(formDetails);
+     if (!experience || !specialization || !fees || !doc) {
+       return toast.error("Input field should not be empty");
+     }
     try {
       await toast.promise(
         axios.post(
@@ -82,8 +89,16 @@ const ApplyDoctor = () => {
               type="number"
               name="fees"
               className="form-input"
-              placeholder="Enter your fees  (in dollars)"
+              placeholder="Enter your fees  (in INR)"
               value={formDetails.fees}
+              onChange={inputChange}
+            />
+            <input
+              type="text"
+              name="doc"
+              className="form-input"
+              placeholder="Enter your Doc link here..."
+              value={formDetails.doc}
               onChange={inputChange}
             />
             <button
