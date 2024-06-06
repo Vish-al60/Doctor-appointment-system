@@ -7,6 +7,7 @@ const doctorRouter = require("./routes/doctorRoutes");
 const appointRouter = require("./routes/appointRoutes");
 const path = require("path");
 const notificationRouter = require("./routes/notificationRouter");
+//const refreshRouter = require("./routes/refreshRouter");
 //const EmailRouter = require("./routes/EmailRouter");
 //const multer = require("multer");
 
@@ -25,6 +26,7 @@ app.use("/api/user", userRouter);
 app.use("/api/doctor", doctorRouter);
 app.use("/api/appointment", appointRouter);
 app.use("/api/notification", notificationRouter);
+//app.use("/api/refresh", refreshRouter)
 
 const transporter = nodemailer.createTransport({
   service: "gmail", // You can use any SMTP service

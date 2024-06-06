@@ -1,5 +1,13 @@
 const jwt = require("jsonwebtoken");
 
+const generateAccessToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '3h' });
+};
+
+const generateRefreshToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
+};
+
 const auth = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
@@ -17,18 +25,7 @@ const auth = (req, res, next) => {
 
 module.exports = auth;
 
-// const jwt = require('jsonwebtoken');
 
-// function authenticateToken(req, res, next) {
-//   const authHeader = req.headers['authorization'];
-//   const token = authHeader && authHeader.split(' ')[1];
 
-//   if (token == null) return res.sendStatus(401);
 
-//   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-//     if (err) return res.sendStatus(403); // Invalid token
-//     req.user = user;
-//     next();
-//   });
-// }
 
